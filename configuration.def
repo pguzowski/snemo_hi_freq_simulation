@@ -1,0 +1,37 @@
+#@description A list of particle generators
+#@key_label  "name"
+#@meta_label "type"
+
+
+# Event generator configuration example
+####################################################################
+[name="hi_freq_decay" type="hi_freq_sim::hi_freq_decay_generator"]
+#@config Electron with monokinetic energy;group=user;variant=if_versatile
+
+#@description logging priority
+logging.priority : string = "fatal"
+
+#@description Actual event generator to use:
+event_generator_name : string = "Bi207"
+
+#@description Readout window duration with explicit unit
+duration : real as time = 1 ms
+
+#@description Activity with explicit unit
+activity : real as activity  = 48000 Bq
+
+
+# Vertex generator configuration example
+##############################################################################
+[name="hi_freq_vg" type="hi_freq_sim::hi_freq_vertex_generator"]
+
+#@config Vertex generation from the bulk volume of all source calibration spots
+
+#@description Logging priority
+logging.priority  : string = "fatal"
+
+#@description Geometry version requirement (not working with version lower than 4.0)
+geometry.setup_requirement : string = "snemo::demonstrator(>=4)"
+
+#@description Actual vertex generator to use
+vg_name   : string  = "source_calibration_all_spots"
